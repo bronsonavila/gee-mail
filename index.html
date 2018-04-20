@@ -5,18 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Welcome to GeeMail!</title>
     <script src="js/mail-generator.js"></script>
-    <link href="css/style.css" rel="stylesheet" media="screen">
+    <script src="js/feather.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" media="screen">    
     <script>
       window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
+
       };
     </script>
   </head>
   <body>
-    <div class="container" id="main">
-      Build Me!
+    <div id="header">
+      <div id="header-container">
+        <div id="logo">
+          <div><i class="feather" data-feather="mail"></i></div>
+          <div>GeeMail!</div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      
     </div>
   </body>
+  <script>
+    feather.replace()
+  </script>  
 </html>
