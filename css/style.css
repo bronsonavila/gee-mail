@@ -23,6 +23,7 @@ body {
   margin: auto;
   height: 4rem;
   width: 90%;
+  max-width: 1140px;
   background: inherit;
 }
 
