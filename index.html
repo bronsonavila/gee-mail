@@ -34,7 +34,7 @@
               '</div></div><div class="email-subject">' + geemails[lastIndex].subject + 
               '</div></div><div class="email-body unread">' + geemails[lastIndex].body + 
               '</div>';
-          mainBody.appendChild(newEmail);
+          mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           inboxCount.textContent = geemails.length;
         }, 5000);
         inboxCount.textContent = geemails.length;
