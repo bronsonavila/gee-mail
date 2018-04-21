@@ -59,7 +59,7 @@ body {
 #subheader {
   padding-top: 4rem;
   border-bottom: 1px solid #d4d4d4;
-  box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);  
+  box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);
 }
 
 #inbox {
@@ -107,8 +107,10 @@ body {
 }
 
 .email {
-  border: 1px solid red;
+  border: 1px solid #000;
   margin-bottom: 0.75rem;
+  background-color: rgba(237, 187, 113, 0.1);
+  box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);
 }
 
 .email-header {
@@ -128,7 +130,19 @@ body {
   font-weight: 800;
 }
 
-.unread {
+.email-body {
+  margin: 4px;
+}
+
+.email-body-hidden {
   height: 0; 
   overflow: hidden;
+}
+
+.opened-email {
+  background-color: rgba(164, 221, 255, 0.1);
+}
+
+.subject-emphasis {
+  font-style: italic;
 }
