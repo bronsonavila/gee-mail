@@ -17,15 +17,20 @@ body {
   box-shadow: 0 2px 4px 0px rgba(174, 174, 174, 0.3);
 }
 
+#header-container,
+#subheader-container,
+#main-container {
+  margin: auto;
+  width: 80%;
+  min-width: 280px;
+  max-width: 960px;  
+}
+
 #header-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: auto;
   height: 4rem;
-  width: 80%;
-  min-width: 280px;
-  max-width: 960px;
   background: inherit;
 }
 
@@ -56,13 +61,6 @@ body {
   box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);  
 }
 
-#subheader-container {
-  margin: auto;
-  width: 80%;
-  min-width: 280px;
-  max-width: 960px;
-}
-
 #main {
   display: flex;
   margin: 0 auto;
@@ -73,10 +71,6 @@ body {
 #main-container {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 80%;
-  min-width: 280px;
-  max-width: 960px;
 }
 
 #inbox {
@@ -134,6 +128,6 @@ body {
 }
 
 .unread {
- height:0; 
- overflow:hidden;
+  height: 0; 
+  overflow: hidden;
 }
