@@ -131,14 +131,15 @@ body {
 .email {
   border: 1px solid #000;
   margin-bottom: 0.75rem;
-  background-color: rgba(237, 187, 113, 0.1);
   box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);
 }
 
 .email-header {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgba(237, 187, 113, 0.1);  
   height: 3rem;
   padding: 4px;
 }
@@ -153,16 +154,18 @@ body {
 }
 
 .email-body {
-  margin: 4px;
+  margin: 8px;
 }
 
 .email-body-hidden {
   height: 0; 
   overflow: hidden;
+  margin: 0 4px 0 4px;  
 }
 
 .open-email {
   background-color: rgba(164, 221, 164, 0.1) !important;
+  border-bottom: 1px solid #d4d4d4;  
 }
 
 .read-email {

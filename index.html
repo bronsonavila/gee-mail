@@ -29,11 +29,11 @@
 
         // create function to open/close the body of an email
         function addOpenClose(email) {
-          email.addEventListener('click', function() {
+          email.children[0].addEventListener('mouseup', function() {
             this.classList.add('read-email');
             this.classList.toggle('open-email');
-            this.children[1].classList.toggle('email-body-hidden');
-            this.children[0].children[1].classList.toggle('subject-emphasis');
+            this.parentNode.children[1].classList.toggle('email-body-hidden');
+            this.children[1].classList.toggle('subject-emphasis');
           });
         };
 
