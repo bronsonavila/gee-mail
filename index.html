@@ -46,7 +46,7 @@
           addOpenClose(email);
         });
 
-        // push new email with open/close functionality to inbox every 10 seconds
+        // push new email with open/close functionality to inbox at set interval
         window.setInterval(function() {
           geemails.push(getNewMessage());
           var newEmail = document.createElement('div');
@@ -66,7 +66,7 @@
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           addOpenClose(newEmail);
           inboxCount.textContent = geemails.length;
-        }, 10000);
+        }, 12345);
       };
     </script>
   </head>
