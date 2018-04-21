@@ -30,7 +30,8 @@
         // create function to open/close the body of an email
         function addOpenClose(email) {
           email.addEventListener('click', function() {
-            this.classList.toggle('opened-email');
+            this.classList.add('read-email');
+            this.classList.toggle('open-email');
             this.children[1].classList.toggle('email-body-hidden');
             this.children[0].children[1].classList.toggle('subject-emphasis');
           });
@@ -63,28 +64,35 @@
     </script>
   </head>
   <body>
-    <div id="header">
-      <div id="header-container">
-        <div id="logo">
-          <div><i class="feather" data-feather="mail"></i></div>
-          <div>GeeMail</div>
-        </div>
-        <div id="greeting">
-          <div>Welcome,</div>
-          <div id="name">DevLeague!</div>
-        </div>
-      </div>
-    </div>
-    <div id="subheader">
-      <div id="subheader-container">
-        <div id="inbox">
-          <div id="inbox-title">Inbox</div>
-          <div id="inbox-total">Total (<span id="inbox-count"></span>)</div>
+    <div id="content">
+      <div id="header">
+        <div id="header-container">
+          <div id="logo">
+            <div><i class="feather" data-feather="mail"></i></div>
+            <div>GeeMail</div>
+          </div>
+          <div id="greeting">
+            <div>Welcome,</div>
+            <div id="name">DevLeague!</div>
+          </div>
         </div>
       </div>
+      <div id="subheader">
+        <div id="subheader-container">
+          <div id="inbox">
+            <div id="inbox-title">Inbox</div>
+            <div id="inbox-total">Total (<span id="inbox-count"></span>)</div>
+          </div>
+        </div>
+      </div>
+      <div id="main">
+        <div id="main-container"></div>
+      </div>
     </div>
-    <div id="main">
-      <div id="main-container"></div>
+    <div id="footer">
+      <div id="footer-container">
+        © 2018 GeeMail. All Rights Reserved.
+      </div>
     </div>
   </body>
   <script>
