@@ -11,17 +11,32 @@
     <script>
       window.onload = function(){
         var inboxCount = document.querySelector('#inbox-count');
-        var mainBody = document.querySelector('#main-body');
-        var elementDiv = document.createElement('div');
+        var mainContainer = document.querySelector('#main-container');
+        var mainBody = document.createElement('div');
+        mainBody.id = 'main-body';
         geemails.forEach(function(geemail) {
-          elementDiv.innerHTML += '<div class="email"><div class="email-header">' +
+          mainBody.innerHTML += '<div class="email"><div class="email-header">' +
               '<div class="email-header-top"><div class="email-sender">' + geemail.sender + 
               '</div><div class="email-date">' + geemail.date.toLocaleDateString() + 
               '</div></div><div class="email-subject">' + geemail.subject + 
               '</div></div><div class="email-body unread">' + geemail.body + 
               '</div></div>';
-          mainBody.appendChild(elementDiv);
+          mainContainer.appendChild(mainBody);
         });
+        window.setInterval(function() {     
+          geemails.push(getNewMessage()); 
+          var newEmail = document.createElement('div');
+          var lastIndex = geemails.length - 1;         
+          newEmail.className = 'email';
+          newEmail.innerHTML = '<div class="email-header">' +
+              '<div class="email-header-top"><div class="email-sender">' + geemails[lastIndex].sender + 
+              '</div><div class="email-date">' + geemails[lastIndex].date.toLocaleDateString() + 
+              '</div></div><div class="email-subject">' + geemails[lastIndex].subject + 
+              '</div></div><div class="email-body unread">' + geemails[lastIndex].body + 
+              '</div>';
+          mainBody.appendChild(newEmail);
+          inboxCount.textContent = geemails.length;
+        }, 5000);
         inboxCount.textContent = geemails.length;
       };
     </script>
@@ -48,9 +63,7 @@
       </div>
     </div>
     <div id="main">
-      <div id="main-container">
-        <div id="main-body"></div>
-      </div>
+      <div id="main-container"></div>
     </div>
   </body>
   <script>
