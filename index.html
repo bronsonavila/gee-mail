@@ -9,20 +9,24 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" media="screen">
     <script>
-      window.onload = function(){
-
+      window.onload = function() {
         // load initial 10 emails into inbox
         var inboxCount = document.querySelector('#inbox-count');
         var mainContainer = document.querySelector('#main-container');
         var mainBody = document.createElement('div');
         mainBody.id = 'main-body';
         geemails.forEach(function(geemail) {
-          mainBody.innerHTML += '<div class="email"><div class="email-header">' +
-              '<div class="email-header-top"><div class="email-sender">' + geemail.sender + 
-              '</div><div class="email-date">' + geemail.date.toLocaleDateString() + 
-              '</div></div><div class="email-subject">' + geemail.subject + 
-              '</div></div><div class="email-body email-body-hidden">' + geemail.body + 
-              '</div></div>';
+          mainBody.innerHTML +=
+            '<div class="email"><div class="email-header">' +
+            '<div class="email-header-top"><div class="email-sender">' +
+            geemail.sender +
+            '</div><div class="email-date">' +
+            geemail.date.toLocaleDateString() +
+            '</div></div><div class="email-subject">' +
+            geemail.subject +
+            '</div></div><div class="email-body email-body-hidden">' +
+            geemail.body +
+            '</div></div>';
           mainContainer.appendChild(mainBody);
         });
         inboxCount.textContent = geemails.length;
@@ -34,7 +38,7 @@
             this.classList.toggle('open-email');
             this.parentNode.children[1].classList.toggle('email-body-hidden');
           });
-        };
+        }
 
         // add functionality to open/close body of initial 10 emails
         var emails = document.querySelectorAll('.email');
@@ -43,22 +47,26 @@
         });
 
         // push new email with open/close functionality to inbox every 10 seconds
-        window.setInterval(function() {     
-          geemails.push(getNewMessage()); 
+        window.setInterval(function() {
+          geemails.push(getNewMessage());
           var newEmail = document.createElement('div');
-          var lastIndex = geemails.length - 1;         
+          var lastIndex = geemails.length - 1;
           newEmail.className = 'email';
-          newEmail.innerHTML = '<div class="email-header">' +
-              '<div class="email-header-top"><div class="email-sender">' + geemails[lastIndex].sender + 
-              '</div><div class="email-date">' + geemails[lastIndex].date.toLocaleDateString() + 
-              '</div></div><div class="email-subject">' + geemails[lastIndex].subject + 
-              '</div></div><div class="email-body email-body-hidden">' + geemails[lastIndex].body + 
-              '</div>';
+          newEmail.innerHTML =
+            '<div class="email-header">' +
+            '<div class="email-header-top"><div class="email-sender">' +
+            geemails[lastIndex].sender +
+            '</div><div class="email-date">' +
+            geemails[lastIndex].date.toLocaleDateString() +
+            '</div></div><div class="email-subject">' +
+            geemails[lastIndex].subject +
+            '</div></div><div class="email-body email-body-hidden">' +
+            geemails[lastIndex].body +
+            '</div>';
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           addOpenClose(newEmail);
           inboxCount.textContent = geemails.length;
         }, 10000);
-
       };
     </script>
   </head>
