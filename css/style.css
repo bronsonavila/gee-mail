@@ -155,10 +155,12 @@ body {
 
 .email-body {
   margin: 8px;
+  max-height: 300px;
+  transition: max-height 0.1s;    
 }
 
 .email-body-hidden {
-  height: 0; 
+  max-height: 0; 
   overflow: hidden;
   margin: 0 4px 0 4px;  
 }
@@ -170,8 +172,4 @@ body {
 
 .read-email {
   background-color: #eee;
-}
-
-.subject-emphasis {
-  font-style: italic;
 }
