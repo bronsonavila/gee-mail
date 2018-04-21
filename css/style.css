@@ -25,7 +25,7 @@ body {
   height: 4rem;
   width: 80%;
   min-width: 280px;
-  max-width: 1140px;
+  max-width: 960px;
   background: inherit;
 }
 
@@ -50,13 +50,24 @@ body {
   font-weight: 800;
 }
 
+#subheader {
+  padding-top: 4rem;
+  border-bottom: 1px solid #d4d4d4;
+  box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);  
+}
+
+#subheader-container {
+  margin: auto;
+  width: 80%;
+  min-width: 280px;
+  max-width: 960px;
+}
+
 #main {
   display: flex;
   margin: 0 auto;
   width: 100%;
-  padding-top: 4rem;
-  border-bottom: 1px solid #d4d4d4;
-  box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);  
+  padding-top: 0.75rem;
 }
 
 #main-container {
@@ -65,29 +76,24 @@ body {
   margin: auto;
   width: 80%;
   min-width: 280px;
-  max-width: 1140px;
+  max-width: 960px;
 }
 
 #inbox {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   padding: 0.75rem 0;
 }
 
 #inbox-title {
-  display: flex;
   font-size: 1.5rem;
   line-height: 1.5rem;
   font-weight: 800;
 }
 
-#inbox-counters {
+#inbox-total {
   display: flex;
-  flex-direction: row; 
-  justify-content: space-between;
   align-items: flex-end;
-  width: 180px;
 }
 
 .feather {
@@ -103,4 +109,31 @@ body {
 
 .feather:hover {
   fill: #ed7171;
+}
+
+.email {
+  border: 1px solid red;
+  margin-bottom: 0.75rem;
+}
+
+.email-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 3rem;
+  padding: 4px;
+}
+
+.email-header-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.email-sender {
+  font-weight: 800;
+}
+
+.unread {
+ height:0; 
+ overflow:hidden;
 }

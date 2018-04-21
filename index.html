@@ -3,14 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Welcome to GeeMail!</title>
+    <title>Welcome to GeeMail</title>
     <script src="js/mail-generator.js"></script>
     <script src="js/feather.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" media="screen">    
+    <link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
-
+        var mainBody = document.querySelector('#main-body');
+        var elementDiv = document.createElement('div');
+        geemails.forEach(function(geemail) {
+          elementDiv.innerHTML += '<div class="email"><div class="email-header">' +
+              '<div class="email-header-top"><div class="email-sender">' + geemail.sender + 
+              '</div><div class="email-date">' + geemail.date.toLocaleDateString() + 
+              '</div></div><div class="email-subject">' + geemail.subject + 
+              '</div></div><div class="email-body unread">' + geemail.body + 
+              '</div></div>';
+          mainBody.appendChild(elementDiv);
+        });
       };
     </script>
   </head>
@@ -27,25 +37,17 @@
         </div>
       </div>
     </div>
-    <div id="main">
-      <div id="main-container">
+    <div id="subheader">
+      <div id="subheader-container">
         <div id="inbox">
           <div id="inbox-title">Inbox</div>
-          <div id="inbox-counters">
-            <div id="inbox-unread">Unread (999)</div>
-            <div id="inbox-total">Total (999)</div>
-          </div>
+          <div id="inbox-total">Total (999)</div>
         </div>
-        <div id="main-body">
-          <div class="email">
-            <div class="email-header">
-              <div class="email-sender"></div>
-              <div class="email-subject"></div>
-              <div class="email-date"></div>
-            </div>
-            <div class="email-body"></div>
-          </div>          
-        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div id="main-container">
+        <div id="main-body"></div>
       </div>
     </div>
   </body>
