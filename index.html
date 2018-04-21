@@ -10,6 +10,7 @@
     <link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
+        var inboxCount = document.querySelector('#inbox-count');
         var mainBody = document.querySelector('#main-body');
         var elementDiv = document.createElement('div');
         geemails.forEach(function(geemail) {
@@ -21,6 +22,7 @@
               '</div></div>';
           mainBody.appendChild(elementDiv);
         });
+        inboxCount.textContent = geemails.length;
       };
     </script>
   </head>
@@ -41,7 +43,7 @@
       <div id="subheader-container">
         <div id="inbox">
           <div id="inbox-title">Inbox</div>
-          <div id="inbox-total">Total (10)</div>
+          <div id="inbox-total">Total (<span id="inbox-count"></span>)</div>
         </div>
       </div>
     </div>
