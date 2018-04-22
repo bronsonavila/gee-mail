@@ -177,7 +177,7 @@ body {
 
 .email-body {
   margin: 8px;
-  max-height: 300px;
+  max-height: 400px;
   transition: max-height 0.1s;    
 }
 
