@@ -121,7 +121,10 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: #edbb71;
-  transition: fill 0.25s;
+  -webkit-transition: fill 0.25s;
+     -moz-transition: fill 0.25s;
+       -o-transition: fill 0.25s;
+          transition: fill 0.25s;
 }
 
 .feather-mail:hover {
@@ -149,7 +152,10 @@ body {
   box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);
   max-height: 800px;
   opacity: 1;
-  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+     -moz-transition: all 0.4s;
+       -o-transition: all 0.4s;
+          transition: all 0.4s;
 }
 
 .email-header {
@@ -165,7 +171,10 @@ body {
 .email-header,
 .open-email,
 .read-email {
-  transition: background-color 0.1s;
+  -webkit-transition: background-color 0.1s;
+     -moz-transition: background-color 0.1s;
+       -o-transition: background-color 0.1s;
+          transition: background-color 0.1s;
 }
 
 .email-header-top,
@@ -181,7 +190,10 @@ body {
 .email-body {
   margin: 8px;
   opacity: 1;
-  transition: opacity 0.1s;
+  -webkit-transition: opacity 0.1s;
+     -moz-transition: opacity 0.1s;
+       -o-transition: opacity 0.1s;
+          transition: opacity 0.1s;
 }
 
 .email-body-hidden {
