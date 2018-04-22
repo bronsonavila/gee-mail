@@ -11,12 +11,13 @@
     <link rel="icon" type="image/png" href="files/favicon.png">
     <script>
       window.onload = function() {
-        // load initial 10 emails and create ID system for use in deletion
         var inboxCount = document.querySelector('#inbox-count');
         var mainContainer = document.querySelector('#main-container');
         var mainBody = document.createElement('div');
-        var _id = 0;
         mainBody.id = 'main-body';
+
+        // load initial 10 emails and create ID system for use in deletion
+        var _id = 0;
         geemails.forEach(function(geemail) {
           geemail._id = _id;
           mainBody.innerHTML +=
@@ -73,15 +74,7 @@
           );
         }
 
-        // add functionality to open/close/delete initial 10 emails
-        var emails = document.querySelectorAll('.email');
-        emails.forEach(function(email) {
-          addOpenClose(email);
-          addDelete(email);
-        });
-
-        // push new email (with open/close/delete options) to inbox at set interval
-        window.setInterval(function() {
+        function createNewEmail() {
           var newMessage = getNewMessage();
           newMessage._id = _id;
           geemails.push(newMessage);
@@ -102,6 +95,19 @@
             '</div></div></div><div class="email-body email-body-hidden">' +
             geemails[lastIndex].body +
             '</div>';
+          return newEmail;
+        }
+
+        // add functionality to open/close/delete initial 10 emails
+        var emails = document.querySelectorAll('.email');
+        emails.forEach(function(email) {
+          addOpenClose(email);
+          addDelete(email);
+        });
+
+        // push new email (with open/close/delete options) to inbox at set interval
+        window.setInterval(function() {
+          var newEmail = createNewEmail();
           _id++;
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           addOpenClose(newEmail);
