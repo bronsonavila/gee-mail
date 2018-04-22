@@ -67,7 +67,7 @@
               email.classList.add('fade-email');
               setTimeout(function() {
                 email.remove();
-              }, 200);
+              }, 400);
               event.stopPropagation();
               inboxCount.textContent = geemails.length;
             }
@@ -112,7 +112,7 @@
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           setTimeout(function() {
             newEmail.classList.remove('email-incoming');
-          }, 100);          
+          }, 10);          
           addOpenClose(newEmail);
           addDelete(newEmail);
           inboxCount.textContent = geemails.length;

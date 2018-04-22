@@ -149,7 +149,7 @@ body {
   box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);
   max-height: 800px;
   opacity: 1;
-  transition: max-height 0.1s, opacity 0.2s;
+  transition: all 0.4s;
 }
 
 .email-header {
@@ -206,5 +206,6 @@ body {
 }
 
 .fade-email {
+  max-height: 0;
   opacity: 0;
 }
