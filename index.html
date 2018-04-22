@@ -61,9 +61,13 @@
         function addDelete(email) {
           email.children[0].children[1].children[1].addEventListener(
             'mouseup',
-            function() {
+            function(event) {
               removeArrayObject(email);
-              email.remove();
+              email.classList.add('fade-email');
+              setTimeout(function() {
+                email.remove();
+              }, 200);
+              event.stopPropagation();
               inboxCount.textContent = geemails.length;
             }
           );
