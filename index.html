@@ -10,28 +10,35 @@
     <link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function() {
-        // load initial 10 emails into inbox
+        // load initial 10 emails and create ID system for use in deletion
         var inboxCount = document.querySelector('#inbox-count');
         var mainContainer = document.querySelector('#main-container');
         var mainBody = document.createElement('div');
+        var _id = 0;
         mainBody.id = 'main-body';
         geemails.forEach(function(geemail) {
+          geemail._id = _id;
           mainBody.innerHTML +=
-            '<div class="email"><div class="email-header">' +
+            '<div id="' +
+            _id +
+            '" class="email"><div class="email-header">' +
             '<div class="email-header-top"><div class="email-sender">' +
             geemail.sender +
             '</div><div class="email-date">' +
             geemail.date.toLocaleDateString() +
-            '</div></div><div class="email-subject">' +
+            '</div></div><div class="email-header-bottom"><div class="email-subject">' +
             geemail.subject +
-            '</div></div><div class="email-body email-body-hidden">' +
+            '</div><div class="trash">' +
+            '<i class="feather-trash" data-feather="trash-2"></i>' +
+            '</div></div></div><div class="email-body email-body-hidden">' +
             geemail.body +
             '</div></div>';
+          _id++;
           mainContainer.appendChild(mainBody);
         });
         inboxCount.textContent = geemails.length;
 
-        // create function to open/close the body of an email
+        // create function to open/close email by clicking email header
         function addOpenClose(email) {
           email.children[0].addEventListener('mouseup', function() {
             this.classList.add('read-email');
@@ -40,17 +47,42 @@
           });
         }
 
-        // add functionality to open/close body of initial 10 emails
+        // create function to remove array object that corresponds to DOM element
+        function removeArrayObject(email) {
+          for (var i = 0; i < geemails.length; i++) {
+            if (geemails[i]._id === Number(email.id)) {
+              geemails.splice(i, 1);
+            }
+          }
+        }
+
+        // create function to delete email by clicking trash icon
+        function addDelete(email) {
+          email.children[0].children[1].children[1].addEventListener(
+            'mouseup',
+            function() {
+              removeArrayObject(email);
+              email.remove();
+              inboxCount.textContent = geemails.length;
+            }
+          );
+        }
+
+        // add functionality to open/close/delete initial 10 emails
         var emails = document.querySelectorAll('.email');
         emails.forEach(function(email) {
           addOpenClose(email);
+          addDelete(email);
         });
 
-        // push new email with open/close functionality to inbox at set interval
+        // push new email (with open/close/delete options) to inbox at set interval
         window.setInterval(function() {
-          geemails.push(getNewMessage());
+          var newMessage = getNewMessage();
+          newMessage._id = _id;
+          geemails.push(newMessage);
           var newEmail = document.createElement('div');
           var lastIndex = geemails.length - 1;
+          newEmail.id = _id;
           newEmail.className = 'email';
           newEmail.innerHTML =
             '<div class="email-header">' +
@@ -58,15 +90,21 @@
             geemails[lastIndex].sender +
             '</div><div class="email-date">' +
             geemails[lastIndex].date.toLocaleDateString() +
-            '</div></div><div class="email-subject">' +
+            '</div></div><div class="email-header-bottom"><div class="email-subject">' +
             geemails[lastIndex].subject +
-            '</div></div><div class="email-body email-body-hidden">' +
+            '</div><div class="trash">' +
+            '<i class="feather-trash" data-feather="trash-2"></i>' +
+            '</div></div></div><div class="email-body email-body-hidden">' +
             geemails[lastIndex].body +
             '</div>';
+          _id++;
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           addOpenClose(newEmail);
+          addDelete(newEmail);
           inboxCount.textContent = geemails.length;
-        }, 12345);
+          feather.replace();
+        }, 7777); // All Lucky 7s!
+        feather.replace();
       };
     </script>
   </head>
@@ -75,7 +113,7 @@
       <div id="header">
         <div id="header-container">
           <div id="logo">
-            <div><i class="feather" data-feather="mail"></i></div>
+            <div><i class="feather-mail" data-feather="mail"></i></div>
             <div>GeeMail</div>
           </div>
           <div id="greeting">
@@ -102,7 +140,4 @@
       </div>
     </div>
   </body>
-  <script>
-    feather.replace()
-  </script>  
 </html>

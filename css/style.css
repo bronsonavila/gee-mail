@@ -113,7 +113,7 @@ body {
   background: linear-gradient(#fff, #e7e7e7);  
 }
 
-.feather {
+.feather-mail {
   width: 38px;
   height: 32px;
   stroke: currentColor;
@@ -124,8 +124,18 @@ body {
   transition: fill 0.25s;
 }
 
-.feather:hover {
-  fill: #ed7171;
+.feather-mail:hover {
+  fill: rgba(0, 200, 255, 0.5);
+}
+
+.feather-trash {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: rgba(255, 0, 0, .25);
 }
 
 .email {
@@ -150,7 +160,8 @@ body {
   transition: background-color 0.1s;
 }
 
-.email-header-top {
+.email-header-top,
+.email-header-bottom {
   display: flex;
   justify-content: space-between;
 }
