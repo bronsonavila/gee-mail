@@ -112,7 +112,7 @@
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           setTimeout(function() {
             newEmail.classList.remove('email-incoming');
-          }, 10);          
+          }, 50);          
           addOpenClose(newEmail);
           addDelete(newEmail);
           inboxCount.textContent = geemails.length;
