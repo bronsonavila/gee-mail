@@ -81,7 +81,7 @@
           var newEmail = document.createElement('div');
           var lastIndex = geemails.length - 1;
           newEmail.id = _id;
-          newEmail.className = 'email';
+          newEmail.className = 'email email-incoming';
           newEmail.innerHTML =
             '<div class="email-header">' +
             '<div class="email-header-top"><div class="email-sender">' +
@@ -110,11 +110,14 @@
           var newEmail = createNewEmail();
           _id++;
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
+          setTimeout(function() {
+            newEmail.classList.remove('email-incoming');
+          }, 100);          
           addOpenClose(newEmail);
           addDelete(newEmail);
           inboxCount.textContent = geemails.length;
           feather.replace();
-        }, 7777); // All Lucky 7s!
+        }, 3333); // All Lucky 7s!
         feather.replace();
       };
     </script>

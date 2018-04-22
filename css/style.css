@@ -35,7 +35,7 @@ body {
   margin: auto;
   width: 80%;
   min-width: 280px;
-  max-width: 960px;  
+  max-width: 960px;
 }
 
 #header-container {
@@ -109,8 +109,8 @@ body {
   flex-shrink: 0;
   height: 3rem;
   margin-top: 1rem;
-  border-top: 1px solid #d4d4d4;  
-  background: linear-gradient(#fff, #e7e7e7);  
+  border-top: 1px solid #d4d4d4;
+  background: linear-gradient(#fff, #e7e7e7);
 }
 
 .feather-mail {
@@ -140,14 +140,16 @@ body {
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
-            user-select: none;  
+            user-select: none;
 }
 
 .email {
   border: 1px solid #000;
   margin-bottom: 0.75rem;
   box-shadow: 0 1px 2px 0px rgba(174, 174, 174, 0.2);
-  transition: opacity 0.2s;
+  max-height: 800px;
+  opacity: 1;
+  transition: max-height 0.1s, opacity 0.2s;
 }
 
 .email-header {
@@ -155,7 +157,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgba(255, 249, 196, 0.5);  
+  background-color: rgba(255, 249, 196, 0.5);
   height: 3rem;
   padding: 4px;
 }
@@ -178,9 +180,7 @@ body {
 
 .email-body {
   margin: 8px;
-  max-height: 600px;
   opacity: 1;
-  transition: max-height 0.1s;
   transition: opacity 0.1s;
 }
 
@@ -189,6 +189,11 @@ body {
   opacity: 0;
   overflow: hidden;
   margin: 0 4px 0 4px;
+}
+
+.email-incoming {
+  max-height: 0;
+  opacity: 0;
 }
 
 .open-email {
