@@ -16,29 +16,35 @@
         var mainBody = document.createElement('div');
         mainBody.id = 'main-body';
 
-        // load initial 10 emails and create ID system for use in deletion
-        var _id = 0;
-        geemails.forEach(function(geemail) {
-          geemail._id = _id;
-          mainBody.innerHTML +=
-            '<div id="' +
-            _id +
-            '" class="email"><div class="email-header">' +
-            '<div class="email-header-top"><div class="email-sender">' +
-            geemail.sender +
-            '</div><div class="email-date">' +
-            geemail.date.toLocaleDateString() +
-            '</div></div><div class="email-header-bottom"><div class="email-subject">' +
-            geemail.subject +
-            '</div><div class="trash">' +
-            '<i class="feather-trash" data-feather="trash-2"></i>' +
-            '</div></div></div><div class="email-body email-body-hidden">' +
-            geemail.body +
-            '</div></div>';
-          _id++;
-          mainContainer.appendChild(mainBody);
+        // sort array of initial 10 emails in chronological order
+        geemails.sort(function(a, b) {
+          return a.date.getTime() > b.date.getTime();
         });
+
+        // load initial 10 emails and create ID system for use in deletion
+        for (var i = 9; i > -1; i--) {
+          geemails[i]._id = i;
+          mainBody.innerHTML +=
+              '<div id="' +
+              i +
+              '" class="email"><div class="email-header">' +
+              '<div class="email-header-top"><div class="email-sender">' +
+              geemails[i].sender +
+              '</div><div class="email-date">' +
+              geemails[i].date.toLocaleDateString() +
+              '</div></div><div class="email-header-bottom"><div class="email-subject">' +
+              geemails[i].subject +
+              '</div><div class="trash">' +
+              '<i class="feather-trash" data-feather="trash-2"></i>' +
+              '</div></div></div><div class="email-body email-body-hidden">' +
+              geemails[i].body +
+              '</div></div>';
+          mainContainer.appendChild(mainBody);
+        }
         inboxCount.textContent = geemails.length;
+
+        // ensures ID numbers for new emails are sequenced appropriately
+        var _id = 10;
 
         // create function to open/close email by clicking email header
         function addOpenClose(email) {
@@ -83,18 +89,18 @@
           newEmail.id = _id;
           newEmail.className = 'email email-incoming';
           newEmail.innerHTML =
-            '<div class="email-header">' +
-            '<div class="email-header-top"><div class="email-sender">' +
-            geemails[lastIndex].sender +
-            '</div><div class="email-date">' +
-            geemails[lastIndex].date.toLocaleDateString() +
-            '</div></div><div class="email-header-bottom"><div class="email-subject">' +
-            geemails[lastIndex].subject +
-            '</div><div class="trash">' +
-            '<i class="feather-trash" data-feather="trash-2"></i>' +
-            '</div></div></div><div class="email-body email-body-hidden">' +
-            geemails[lastIndex].body +
-            '</div>';
+              '<div class="email-header">' +
+              '<div class="email-header-top"><div class="email-sender">' +
+              geemails[lastIndex].sender +
+              '</div><div class="email-date">' +
+              geemails[lastIndex].date.toLocaleDateString() +
+              '</div></div><div class="email-header-bottom"><div class="email-subject">' +
+              geemails[lastIndex].subject +
+              '</div><div class="trash">' +
+              '<i class="feather-trash" data-feather="trash-2"></i>' +
+              '</div></div></div><div class="email-body email-body-hidden">' +
+              geemails[lastIndex].body +
+              '</div>';
           return newEmail;
         }
 
