@@ -6,6 +6,7 @@
     <title>Welcome to GeeMail</title>
     <script src="js/mail-generator.js"></script>
     <script src="js/feather.min.js"></script>
+    <script src="js/moment.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" media="screen">
     <link rel="icon" type="image/png" href="files/favicon.png">
@@ -31,7 +32,7 @@
               '<div class="email-header-top"><div class="email-sender">' +
               geemails[i].sender +
               '</div><div class="email-date">' +
-              geemails[i].date.toLocaleDateString() +
+              moment(geemails[i].date).format('MMM. DD, YYYY') +
               '</div></div><div class="email-header-bottom"><div class="email-subject">' +
               geemails[i].subject +
               '</div><div class="trash">' +
@@ -93,7 +94,7 @@
               '<div class="email-header-top"><div class="email-sender">' +
               geemails[lastIndex].sender +
               '</div><div class="email-date">' +
-              geemails[lastIndex].date.toLocaleDateString() +
+              moment(geemails[lastIndex].date).format('MMM. DD, YYYY') +
               '</div></div><div class="email-header-bottom"><div class="email-subject">' +
               geemails[lastIndex].subject +
               '</div><div class="trash">' +
@@ -121,10 +122,12 @@
           }, 50);          
           addOpenClose(newEmail);
           addDelete(newEmail);
-          inboxCount.textContent = geemails.length;
           feather.replace();
+          moment().format();
+          inboxCount.textContent = geemails.length;          
         }, 7777); // All Lucky 7s!
         feather.replace();
+        moment().format();
       };
     </script>
   </head>
