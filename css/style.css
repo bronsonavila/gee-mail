@@ -65,7 +65,7 @@ body {
 
 #name,
 #inbox-count {
-  font-weight: 800 !important;
+  font-weight: 600 !important;
 }
 
 #subheader {
@@ -84,7 +84,7 @@ body {
 #inbox-title {
   font-size: 1.5rem;
   line-height: 1.5rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 #inbox-total {
@@ -136,6 +136,11 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: rgba(255, 0, 0, .25);
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;  
 }
 
 .email {
@@ -167,7 +172,7 @@ body {
 }
 
 .email-sender {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .email-body {
