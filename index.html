@@ -70,13 +70,15 @@
           email.children[0].children[1].children[1].addEventListener(
             'mouseup',
             function(event) {
+              event.stopPropagation();
               removeArrayObject(email);
               email.classList.add('fade-email');
               setTimeout(function() {
                 email.remove();
               }, 350);
-              event.stopPropagation();
-              inboxCount.textContent = geemails.length;
+              setTimeout(function() {
+                inboxCount.textContent = geemails.length;
+              }, 250);
             }
           );
         }
@@ -119,12 +121,14 @@
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           setTimeout(function() {
             newEmail.classList.remove('email-incoming');
-          }, 50);          
-          addOpenClose(newEmail);
-          addDelete(newEmail);
+          }, 50);
+          setTimeout(function() {
+            addOpenClose(newEmail);
+            addDelete(newEmail);
+          }, 250);
           feather.replace();
           moment().format();
-          inboxCount.textContent = geemails.length;          
+          inboxCount.textContent = geemails.length;
         }, 7777); // All Lucky 7s! 🎰
         feather.replace();
         moment().format();
