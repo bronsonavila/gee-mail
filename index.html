@@ -14,15 +14,14 @@
       window.onload = function() {
         var inboxCount = document.querySelector('#inbox-count');
         var mainContainer = document.querySelector('#main-container');
-        var mainBody = document.createElement('div');
-        mainBody.id = 'main-body';
+        var mainBody = document.querySelector('#main-body');
 
-        // Sort array of initial 10 emails in chronological order:
+        // Sort array of old emails in chronological order:
         geemails.sort(function(a, b) {
           return a.date.getTime() > b.date.getTime();
         });
 
-        // Load initial 10 emails and create ID system for use in deletion:
+        // Load old emails and create ID system for use in deletion:
         for (var i = geemails.length - 1; i > -1; i--) {
           geemails[i]._id = i;
           mainBody.innerHTML +=
@@ -83,14 +82,16 @@
           );
         }
 
-        function createNewEmail() {
+        function pushNewMessageToGeemails() {
           var newMessage = getNewMessage();
           newMessage._id = _id;
           geemails.push(newMessage);
+        }
+
+        function createNewEmail() {
           var newEmail = document.createElement('div');
           var lastIndex = geemails.length - 1;
           newEmail.id = _id;
-          newEmail.className = 'email email-incoming';
           newEmail.innerHTML =
               '<div class="email-header">' +
               '<div class="email-header-top"><div class="email-sender">' +
@@ -104,6 +105,7 @@
               '</div></div></div><div class="email-body email-body-hidden">' +
               geemails[lastIndex].body +
               '</div>';
+          _id++;
           return newEmail;
         }
 
@@ -116,8 +118,9 @@
 
         // Send new email (with open/close/delete options) to inbox at set interval:
         window.setInterval(function() {
+          pushNewMessageToGeemails();
           var newEmail = createNewEmail();
-          _id++;
+          newEmail.className = 'email email-incoming';
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           setTimeout(function() {
             newEmail.classList.remove('email-incoming');
@@ -126,9 +129,10 @@
             addOpenClose(newEmail);
             addDelete(newEmail);
           }, 250);
+          inboxCount.textContent = geemails.length;
           feather.replace();
           moment().format();
-          inboxCount.textContent = geemails.length;
+
         }, 7777); // All Lucky 7s! 🎰
         feather.replace();
         moment().format();
@@ -158,7 +162,9 @@
         </div>
       </div>
       <div id="main">
-        <div id="main-container"></div>
+        <div id="main-container">
+          <div id="main-body"></div>
+        </div>
       </div>
     </div>
     <div id="footer">
