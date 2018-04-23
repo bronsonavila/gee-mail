@@ -17,12 +17,12 @@
         var mainBody = document.createElement('div');
         mainBody.id = 'main-body';
 
-        // sort array of initial 10 emails in chronological order
+        // Sort array of initial 10 emails in chronological order:
         geemails.sort(function(a, b) {
           return a.date.getTime() > b.date.getTime();
         });
 
-        // load initial 10 emails and create ID system for use in deletion
+        // Load initial 10 emails and create ID system for use in deletion:
         for (var i = 9; i > -1; i--) {
           geemails[i]._id = i;
           mainBody.innerHTML +=
@@ -44,10 +44,10 @@
         }
         inboxCount.textContent = geemails.length;
 
-        // ensures ID numbers for new emails are sequenced appropriately
+        // Ensure ID numbers for new emails are sequenced appropriately:
         var _id = 10;
 
-        // create function to open/close email by clicking email header
+        // Create function to open/close email by clicking email header:
         function addOpenClose(email) {
           email.children[0].addEventListener('mouseup', function() {
             this.classList.add('read-email');
@@ -56,7 +56,7 @@
           });
         }
 
-        // create function to remove array object that corresponds to DOM element
+        // Create function to remove array element that corresponds to its DOM element:
         function removeArrayObject(email) {
           for (var i = 0; i < geemails.length; i++) {
             if (geemails[i]._id === Number(email.id)) {
@@ -65,7 +65,7 @@
           }
         }
 
-        // create function to delete email by clicking trash icon
+        // Create function to delete email by clicking trash icon:
         function addDelete(email) {
           email.children[0].children[1].children[1].addEventListener(
             'mouseup',
@@ -105,14 +105,14 @@
           return newEmail;
         }
 
-        // add functionality to open/close/delete initial 10 emails
+        // Add ability to open/close/delete initial 10 emails:
         var emails = document.querySelectorAll('.email');
         emails.forEach(function(email) {
           addOpenClose(email);
           addDelete(email);
         });
 
-        // push new email (with open/close/delete options) to inbox at set interval
+        // Send new email (with open/close/delete options) to inbox at set interval:
         window.setInterval(function() {
           var newEmail = createNewEmail();
           _id++;
@@ -125,7 +125,7 @@
           feather.replace();
           moment().format();
           inboxCount.textContent = geemails.length;          
-        }, 7777); // All Lucky 7s!
+        }, 7777); // All Lucky 7s! 🎰
         feather.replace();
         moment().format();
       };
@@ -164,3 +164,4 @@
     </div>
   </body>
 </html>
+<!-- 👋 -->
