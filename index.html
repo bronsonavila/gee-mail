@@ -23,7 +23,7 @@
         });
 
         // Load initial 10 emails and create ID system for use in deletion:
-        for (var i = 9; i > -1; i--) {
+        for (var i = geemails.length - 1; i > -1; i--) {
           geemails[i]._id = i;
           mainBody.innerHTML +=
               '<div id="' +
@@ -45,7 +45,7 @@
         inboxCount.textContent = geemails.length;
 
         // Ensure ID numbers for new emails are sequenced appropriately:
-        var _id = 10;
+        var _id = geemails.length;
 
         // Create function to open/close email by clicking email header:
         function addOpenClose(email) {
