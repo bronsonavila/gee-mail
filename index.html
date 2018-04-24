@@ -16,30 +16,36 @@
         var mainContainer = document.querySelector('#main-container');
         var mainBody = document.querySelector('#main-body');
 
+        function constructDisplayedEmail(id, index) {
+          var displayedEmail = document.createElement('div');
+          displayedEmail.id = id;
+          displayedEmail.innerHTML =
+              '<div class="email-header">' +
+              '<div class="email-header-top"><div class="email-sender">' +
+              geemails[index].sender +
+              '</div><div class="email-date">' +
+              moment(geemails[index].date).format('MMM. DD, YYYY') +
+              '</div></div><div class="email-header-bottom"><div class="email-subject">' +
+              geemails[index].subject +
+              '</div><div class="trash">' +
+              '<i class="feather-trash" data-feather="trash-2"></i>' +
+              '</div></div></div><div class="email-body email-body-hidden">' +
+              geemails[index].body +
+              '</div>';
+          return displayedEmail;
+        }
+
         // Sort array of old emails in chronological order:
         geemails.sort(function(a, b) {
           return a.date.getTime() > b.date.getTime();
         });
 
         // Load old emails and create ID system for use in deletion:
-        for (var i = geemails.length - 1; i > -1; i--) {
+        for (var i = 0; i < geemails.length; i++) {
           geemails[i]._id = i;
-          mainBody.innerHTML +=
-              '<div id="' +
-              i +
-              '" class="email"><div class="email-header">' +
-              '<div class="email-header-top"><div class="email-sender">' +
-              geemails[i].sender +
-              '</div><div class="email-date">' +
-              moment(geemails[i].date).format('MMM. DD, YYYY') +
-              '</div></div><div class="email-header-bottom"><div class="email-subject">' +
-              geemails[i].subject +
-              '</div><div class="trash">' +
-              '<i class="feather-trash" data-feather="trash-2"></i>' +
-              '</div></div></div><div class="email-body email-body-hidden">' +
-              geemails[i].body +
-              '</div></div>';
-          mainContainer.appendChild(mainBody);
+          oldEmail = constructDisplayedEmail(i, i);
+          oldEmail.className = 'email';
+          mainBody.insertBefore(oldEmail, mainBody.childNodes[0]);
         }
         inboxCount.textContent = geemails.length;
 
@@ -88,27 +94,6 @@
           geemails.push(newMessage);
         }
 
-        function createNewEmail() {
-          var newEmail = document.createElement('div');
-          var lastIndex = geemails.length - 1;
-          newEmail.id = _id;
-          newEmail.innerHTML =
-              '<div class="email-header">' +
-              '<div class="email-header-top"><div class="email-sender">' +
-              geemails[lastIndex].sender +
-              '</div><div class="email-date">' +
-              moment(geemails[lastIndex].date).format('MMM. DD, YYYY') +
-              '</div></div><div class="email-header-bottom"><div class="email-subject">' +
-              geemails[lastIndex].subject +
-              '</div><div class="trash">' +
-              '<i class="feather-trash" data-feather="trash-2"></i>' +
-              '</div></div></div><div class="email-body email-body-hidden">' +
-              geemails[lastIndex].body +
-              '</div>';
-          _id++;
-          return newEmail;
-        }
-
         // Add ability to open/close/delete initial 10 emails:
         var emails = document.querySelectorAll('.email');
         emails.forEach(function(email) {
@@ -119,7 +104,8 @@
         // Send new email (with open/close/delete options) to inbox at set interval:
         window.setInterval(function() {
           pushNewMessageToGeemails();
-          var newEmail = createNewEmail();
+          var newEmail = constructDisplayedEmail(_id, geemails.length - 1);
+          _id++
           newEmail.className = 'email email-incoming';
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           setTimeout(function() {
