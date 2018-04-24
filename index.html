@@ -13,8 +13,12 @@
     <script>
       window.onload = function() {
         var inboxCount = document.querySelector('#inbox-count');
-        var mainContainer = document.querySelector('#main-container');
         var mainBody = document.querySelector('#main-body');
+
+        // Sort array of old emails in chronological order:
+        geemails.sort(function(a, b) {
+          return a.date.getTime() > b.date.getTime();
+        });
 
         function constructDisplayedEmail(id, index) {
           var displayedEmail = document.createElement('div');
@@ -34,11 +38,6 @@
               '</div>';
           return displayedEmail;
         }
-
-        // Sort array of old emails in chronological order:
-        geemails.sort(function(a, b) {
-          return a.date.getTime() > b.date.getTime();
-        });
 
         // Load old emails and create ID system for use in deletion:
         for (var i = 0; i < geemails.length; i++) {
@@ -61,15 +60,6 @@
           });
         }
 
-        // Create function to remove array element that corresponds to its DOM element:
-        function removeArrayObject(email) {
-          for (var i = 0; i < geemails.length; i++) {
-            if (geemails[i]._id === Number(email.id)) {
-              geemails.splice(i, 1);
-            }
-          }
-        }
-
         // Create function to delete email by clicking trash icon:
         function addDelete(email) {
           email.children[0].children[1].children[1].addEventListener(
@@ -88,23 +78,33 @@
           );
         }
 
-        function pushNewMessageToGeemails() {
-          var newMessage = getNewMessage();
-          newMessage._id = _id;
-          geemails.push(newMessage);
+        // Create function to remove array element that matches deleted DOM element:
+        function removeArrayObject(email) {
+          for (var i = 0; i < geemails.length; i++) {
+            if (geemails[i]._id === Number(email.id)) {
+              geemails.splice(i, 1);
+            }
+          }
         }
 
-        // Add ability to open/close/delete initial 10 emails:
+        // Add ability to open/close/delete old emails:
         var emails = document.querySelectorAll('.email');
         emails.forEach(function(email) {
           addOpenClose(email);
           addDelete(email);
         });
 
-        // Send new email (with open/close/delete options) to inbox at set interval:
+        function pushNewMessageToGeemails() {
+          var newMessage = getNewMessage();
+          newMessage._id = _id;
+          geemails.push(newMessage);
+        }
+
+        // Display new email (with open/close/delete options) in inbox at set interval:
         window.setInterval(function() {
           pushNewMessageToGeemails();
-          var newEmail = constructDisplayedEmail(_id, geemails.length - 1);
+          var lastIndex = geemails.length - 1;
+          var newEmail = constructDisplayedEmail(_id, lastIndex);
           _id++
           newEmail.className = 'email email-incoming';
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
@@ -118,7 +118,6 @@
           inboxCount.textContent = geemails.length;
           feather.replace();
           moment().format();
-
         }, 7777); // All Lucky 7s! 🎰
         feather.replace();
         moment().format();
