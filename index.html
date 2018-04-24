@@ -46,6 +46,7 @@
           oldEmail.className = 'email';
           mainBody.insertBefore(oldEmail, mainBody.childNodes[0]);
         }
+
         inboxCount.textContent = geemails.length;
 
         // Ensure ID numbers for new emails are sequenced appropriately:
@@ -66,7 +67,7 @@
             'mouseup',
             function(event) {
               event.stopPropagation();
-              removeArrayObject(email);
+              removeArrayElement(email);
               email.classList.add('fade-email');
               setTimeout(function() {
                 email.remove();
@@ -79,7 +80,7 @@
         }
 
         // Create function to remove array element that matches deleted DOM element:
-        function removeArrayObject(email) {
+        function removeArrayElement(email) {
           for (var i = 0; i < geemails.length; i++) {
             if (geemails[i]._id === Number(email.id)) {
               geemails.splice(i, 1);
@@ -119,6 +120,7 @@
           feather.replace();
           moment().format();
         }, 7777); // All Lucky 7s! 🎰
+        
         feather.replace();
         moment().format();
       };
