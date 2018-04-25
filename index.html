@@ -20,15 +20,26 @@
           return a.date.getTime() > b.date.getTime();
         });
 
+        // Create date format for emails (with a special case for the month of May):
+        function constructEmailDate(displayedEmailMonth, index) {
+          if (displayedEmailMonth === 4) {
+            var date = moment(geemails[index].date).format('MMM DD, YYYY');
+          } else {
+            date = moment(geemails[index].date).format('MMM. DD, YYYY');
+          }
+          return date;
+        };
+
         function constructDisplayedEmail(id, index) {
           var displayedEmail = document.createElement('div');
+          var displayedEmailMonth = geemails[index].date.getMonth();
           displayedEmail.id = id;
           displayedEmail.innerHTML =
               '<div class="email-header">' +
               '<div class="email-header-top"><div class="email-sender">' +
               geemails[index].sender +
               '</div><div class="email-date">' +
-              moment(geemails[index].date).format('MMM. DD, YYYY') +
+              constructEmailDate(displayedEmailMonth, index) +
               '</div></div><div class="email-header-bottom"><div class="email-subject">' +
               geemails[index].subject +
               '</div><div class="trash">' +
