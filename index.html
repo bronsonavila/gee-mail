@@ -17,7 +17,7 @@
 
         // Sort array of old emails in chronological order:
         geemails.sort(function(a, b) {
-          return a.date.getTime() > b.date.getTime();
+          return a.date > b.date;
         });
 
         // Create date format for emails (with a special case for the month of May):
