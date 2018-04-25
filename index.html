@@ -22,13 +22,10 @@
 
         // Create date format for emails (with a special case for the month of May):
         function constructEmailDate(displayedEmailMonth, index) {
-          if (displayedEmailMonth === 4) {
-            var date = moment(geemails[index].date).format('MMM DD, YYYY');
-          } else {
-            date = moment(geemails[index].date).format('MMM. DD, YYYY');
-          }
-          return date;
-        };
+          return displayedEmailMonth === 4
+              ? moment(geemails[index].date).format('MMM DD, YYYY')
+              : moment(geemails[index].date).format('MMM. DD, YYYY');
+        }
 
         function constructDisplayedEmail(id, index) {
           var displayedEmail = document.createElement('div');
