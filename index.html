@@ -110,7 +110,7 @@
         }
 
         // Display new email (with open/close/delete options) in inbox at set interval:
-        window.setInterval(function() {
+        setInterval(function() {
           pushNewMessageToGeemails();
           var lastIndex = geemails.length - 1;
           var newEmail = constructDisplayedEmail(_id, lastIndex);
