@@ -114,7 +114,7 @@
           pushNewMessageToGeemails();
           var lastIndex = geemails.length - 1;
           var newEmail = constructDisplayedEmail(_id, lastIndex);
-          newEmail.className = 'email email-incoming';          
+          newEmail.className = 'email email-incoming';
           mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
           setTimeout(function() {
             newEmail.classList.remove('email-incoming');
