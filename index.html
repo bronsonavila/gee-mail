@@ -13,7 +13,7 @@
     <script>
       window.onload = function() {
         var inboxCount = document.querySelector('#inbox-count');
-        var mainBody = document.querySelector('#main-body');
+        var mainContainer = document.querySelector('#main-container');
 
         // Sort array of old emails in chronological order:
         geemails.sort(function(a, b) {
@@ -52,7 +52,7 @@
           geemails[i]._id = i;
           oldEmail = constructDisplayedEmail(i, i);
           oldEmail.className = 'email';
-          mainBody.insertBefore(oldEmail, mainBody.childNodes[0]);
+          mainContainer.insertBefore(oldEmail, mainContainer.childNodes[0]);
         }
 
         inboxCount.textContent = geemails.length;
@@ -115,7 +115,7 @@
           var lastIndex = geemails.length - 1;
           var newEmail = constructDisplayedEmail(_id, lastIndex);
           newEmail.className = 'email email-incoming';
-          mainBody.insertBefore(newEmail, mainBody.childNodes[0]);
+          mainContainer.insertBefore(newEmail, mainContainer.childNodes[0]);
           setTimeout(function() {
             newEmail.classList.remove('email-incoming');
           }, 50);
@@ -150,16 +150,12 @@
       </div>
       <div id="subheader">
         <div id="subheader-container">
-          <div id="inbox">
-            <div id="inbox-title">Inbox</div>
-            <div id="inbox-total">Total (<span id="inbox-count"></span>)</div>
-          </div>
+          <div id="inbox-title">Inbox</div>
+          <div id="inbox-total">Total (<span id="inbox-count"></span>)</div>
         </div>
       </div>
       <div id="main">
-        <div id="main-container">
-          <div id="main-body"></div>
-        </div>
+        <div id="main-container"></div>
       </div>
     </div>
     <div id="footer">
