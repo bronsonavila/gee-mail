@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Welcome to GeeMail</title>
-    <script src="js/mail-generator.js"></script>
-    <script src="js/feather.min.js"></script>
-    <script src="js/moment.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" media="screen">
     <link rel="icon" type="image/png" href="files/favicon.png">
+    <script src="js/mail-generator.js"></script>
+    <script src="js/feather.min.js"></script>
+    <script src="js/moment.min.js"></script>
     <script>
       window.onload = function() {
         var inboxCount = document.querySelector('#inbox-count');
@@ -62,8 +62,16 @@
 
         // Create function to open/close email by clicking email header:
         function addOpenClose(email) {
+          var allEmails = email.parentNode.children;
           email.children[0].addEventListener('mouseup', function() {
-            this.classList.add('read-email');
+            // Close any other open email except for the email which has been clicked:
+            if (this.classList != 'email-header read-email open-email') {
+              for (var i = 0; i < allEmails.length; i++) {
+                allEmails[i].children[0].classList.remove('open-email');
+                allEmails[i].children[1].classList.add('email-body-hidden');
+              }
+              this.classList.add('read-email');
+            }
             this.classList.toggle('open-email');
             this.parentNode.children[1].classList.toggle('email-body-hidden');
           });
