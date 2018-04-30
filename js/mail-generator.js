@@ -11,27 +11,29 @@
   function loadGeeMails(){
     for (var i = 0; i < 10; i++){
       var message = generateMessage();
-      window.geemails.push(message);
+      window.geemails.push(message);      //pushing generateMessage function into window.geemails empty array 
     }
   }
+  
 
   function generateMessage(date){
     var message = {};
-    message.date = date || getRandomDate();
-    message.subject = getRandomElement(subject);
-    message.sender = getRandomElement(sender);
-    message.body = getRandomElement(body);
+    message.date = date || getRandomDate();  //applying a random date to the object
+    message.subject = getRandomElement(subject);  //applying random subject 
+    message.sender = getRandomElement(sender);  //applying random sender
+    message.body = getRandomElement(body);  //applying random body 
     return message;
   }
 
   function getRandomElement(arr){
-    return arr[Math.floor(Math.random() * arr.length)];
+    return arr[Math.floor(Math.random() * arr.length)];  //function to return random elements in generateMessage
   }
 
   function getNewMessage(){
     var now = new Date();
     return generateMessage(now);
   }
+  console.log(getNewMessage());
 
   function getRandomDate(){
     var year = 2013;
@@ -46,4 +48,5 @@
   window.geemails = [];
   window.getNewMessage = getNewMessage;
   loadGeeMails();	
+
 })();

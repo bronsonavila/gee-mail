@@ -1,18 +1,131 @@
-<html>
-	<head>
-		<script src="js/mail-generator.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>GeeMail</title>
+	<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
-      };
+				// We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+			
+			function generateElem(elemType, cName, text) {
+  			var newElem = document.createElement(elemType);
+  			newElem.className = cName;
+  			newElem.innerHTML = text;
+  
+  			return newElem;
+			}
+
+			var headingBox = document.createElement('section');
+			headingBox.className = 'headings';
+			document.body.appendChild(headingBox);
+
+			var senderElem = generateElem('div', 'senderHeading', "Sender");
+			headingBox.appendChild(senderElem);
+			
+			var subjectElem = generateElem('div', 'subjectHeading', "Subject");
+			headingBox.appendChild(subjectElem);
+
+			var dateElem = generateElem('div', 'dateHeading', 'Date');
+			headingBox.appendChild(dateElem);
+
+			
+
+		
+			function loadMail(content) {
+				for (var i=0; i<content.length; i++){
+
+					var mailBox = document.createElement('section');
+					mailBox.className = 'messages';
+					document.body.appendChild(mailBox);
+			
+					var senderData = generateElem('div', 'sender', content[i].sender);
+					mailBox.appendChild(senderData);
+
+					var subjectData = generateElem('div', 'subject', content[i].subject);
+					mailBox.appendChild(subjectData);
+
+					var dateData = generateElem('div', 'date', content[i].date);
+					mailBox.appendChild(dateData);
+
+					var bodyData = generateElem('div', 'body', content[i].body);
+					senderData.appendChild(bodyData);
+
+					
+				}
+				
+			}
+		loadMail(window.geemails);
+
+		
+
+
+		var parentElem = document.getElementsByClassName('messages');
+
+		for (var i=0; i<parentElem.length; i++) {
+			parentElem[i].addEventListener('click', showMail);
+		}
+
+		function showMail() {
+			var childElem = this.querySelectorAll('.body')[0];
+			if (childElem.style.display === 'block') {
+				childElem.style.display = 'none';
+			} else { 
+				childElem.style.display = 'block';
+			}
+		}
+
+
+		
+
+
+			
+			// var mailElem = document.createElement('div');
+			// mailElem.innerHTML = loadMail(window.geemails);
+			// mail.appendChild(mailElem);
+
+
+			// var generateMail = (loadMail(window.geemails));
+			// console.log(window.geemails);
+			// console.log((window.geemails).length);
+
+};
+			
+
     </script>
-	</head>
-	<body>
-		<div class="container" id="main">
-			Build Me!
+</head>
+<body>
+	<section id="top-box">
+		<div class="heading">
+			<h1 class="geeMail">GeeMail</h1>
+
+<!-- <div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+  </div>
+</div> -->
+
 		</div>
-	</body>
+	</section>
+
+
+	<!-- <section id="body">
+		<div class="left-box">
+			<li class="actions"><button type="button">Compose</button></li>
+			<li class="actions">Inbox</li>
+			<li class="actions">Starred</li>
+			<li class="actions">Sent Mail</li>
+			<li class="actions">Drafts</li>
+		</div>
+		<div id="mid-box"> </div>
+	</section> -->
+
+</body>
 </html>

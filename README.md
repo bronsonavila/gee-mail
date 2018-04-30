@@ -1,4 +1,4 @@
-# GeeMail 
+<!-- # GeeMail 
 
 GeeMail is a coding exercise meant to simulate an e-mail web application inbox.
 
@@ -20,7 +20,7 @@ You will need the following tools to complete this challenge
 1. Fork this repository to your own GitHub profile and clone to your local machine.
  * [How to Fork A Repository](https://help.github.com/articles/fork-a-repo/)
 
-2. Create a basic page layout via HTML/CSS with a top header section with the name of the application and a content section where you will display the messages.
+2. Create a basic page layout via HTML/CSS with a top header section with the name of the application and a content section where you will display the messages. -->
 
 3. When your page loads, via JavaScript access our prepopulated data stored in the `window.geemails` variable. Each object in the array has the following properties:
 	* date - The date message was sent
