@@ -15,7 +15,7 @@ body {
 }
 
 a:visited {
-  color: initial;
+  color: #000;
 }
 
 #content {
@@ -109,7 +109,7 @@ a:visited {
 .feather-mail {
   width: 38px;
   height: 32px;
-  stroke: currentColor;
+  stroke: #000;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -127,7 +127,7 @@ a:visited {
 .feather-trash {
   width: 19px;
   height: 19px;
-  stroke: currentColor;
+  stroke: #000;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
