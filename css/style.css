@@ -185,10 +185,10 @@ a:visited {
   margin: 8px;
   max-height: 568px;
   opacity: 1;
-  -webkit-transition: all 0.066s ease-in-out, opacity 0.33s;
-     -moz-transition: all 0.066s ease-in-out, opacity 0.33s;
-       -o-transition: all 0.066s ease-in-out, opacity 0.33s;
-          transition: all 0.066s ease-in-out, opacity 0.33s;
+  -webkit-transition: all 0.1s ease-in-out, opacity 0.33s;
+     -moz-transition: all 0.1s ease-in-out, opacity 0.33s;
+       -o-transition: all 0.1s ease-in-out, opacity 0.33s;
+          transition: all 0.1s ease-in-out, opacity 0.33s;
 }
 
 .email-body-hidden {
