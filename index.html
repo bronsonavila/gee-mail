@@ -64,7 +64,7 @@
         function addOpenClose(email) {
           email.children[0].addEventListener('mouseup', function() {
             // Close any other open email except for the email which has been clicked:
-            if (this.classList != 'email-header read-email open-email') {
+            if (this.className !== 'email-header read-email open-email') {
               var allEmails = email.parentNode.children;
               for (var i = 0; i < allEmails.length; i++) {
                 allEmails[i].children[0].classList.remove('open-email');
