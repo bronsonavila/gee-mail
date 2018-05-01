@@ -1,5 +1,17 @@
+body {
+    border: solid 3px;
+}
+.logo {
+    height: 50px;
+    width: 50px;
+    float: right;
+}
 .geeMail {
-    background-color: lightgray;
+    font-size: 30px;
+}
+
+.messages{
+    cursor:pointer;
 }
 
 .headings {
@@ -9,12 +21,24 @@
     /* display: inline-block; */
 }
 
+.senderHeading {
+    display: inline-block;
+    width: 33%;
+
+}
 .subjectHeading {
     text-align: center;
+    display: inline-block;
+    width: 33%;
+
 }
 
 .dateHeading {
     text-align: right;
+    display: inline-block;
+    width: 33%;
+
+
 }
 
 .body {
@@ -24,6 +48,7 @@
 .sender {
     display: inline-block;
     width: 33%;
+    background-color: cornflowerblue;
     
 }
 
@@ -31,6 +56,7 @@
     text-align: center;
     display: inline-block;
     width: 33%;
+    background-color: red;
 
 }
 
@@ -38,6 +64,7 @@
     text-align: right;
     display: inline-block;
     width: 33%;
+    background-color: green;
 }
 
 

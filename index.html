@@ -11,7 +11,8 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
 				// We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-			
+
+//basic helper function
 			function generateElem(elemType, cName, text) {
   			var newElem = document.createElement(elemType);
   			newElem.className = cName;
@@ -20,6 +21,11 @@
   			return newElem;
 			}
 
+//email counter
+			
+
+
+//heading content 
 			var headingBox = document.createElement('section');
 			headingBox.className = 'headings';
 			document.body.appendChild(headingBox);
@@ -32,17 +38,16 @@
 
 			var dateElem = generateElem('div', 'dateHeading', 'Date');
 			headingBox.appendChild(dateElem);
-
 			
-
-		
+//function to load mail content into the body
 			function loadMail(content) {
 				for (var i=0; i<content.length; i++){
 
+					//container for mail headings  //when set as ID it breaks?
 					var mailBox = document.createElement('section');
 					mailBox.className = 'messages';
 					document.body.appendChild(mailBox);
-			
+					
 					var senderData = generateElem('div', 'sender', content[i].sender);
 					mailBox.appendChild(senderData);
 
@@ -53,23 +58,44 @@
 					mailBox.appendChild(dateData);
 
 					var bodyData = generateElem('div', 'body', content[i].body);
-					senderData.appendChild(bodyData);
+					mailBox.appendChild(bodyData);
 
-					
+					mailBox.addEventListener('click', showMail);
+
 				}
 				
 			}
 		loadMail(window.geemails);
 
+//creates and appends a new message to the application
+var newMessages = setInterval(newMail, 8000);
+
+function newMail(){
+
+		var newMail = getNewMessage();
+
+		var mailBoxTwo = document.createElement('section');
+		mailBoxTwo.className = 'messages';
+		document.body.appendChild(mailBoxTwo);
 		
+		var newSender = generateElem('div', 'sender', newMail.sender);
+		mailBoxTwo.appendChild(newSender);
 
+		var newSubject = generateElem('div', 'subject', newMail.subject);
+		mailBoxTwo.appendChild(newSubject);
 
-		var parentElem = document.getElementsByClassName('messages');
+		var newDate = generateElem('div', 'date', newMail.date);
+		mailBoxTwo.appendChild(newDate);
 
-		for (var i=0; i<parentElem.length; i++) {
-			parentElem[i].addEventListener('click', showMail);
-		}
+		var newBody = generateElem('div', 'body', newMail.body);
+		mailBoxTwo.appendChild(newBody);
 
+		mailBoxTwo.addEventListener('click', showMail);
+		
+}
+newMail(getNewMessage());
+
+//adds event listner to show message content on click
 		function showMail() {
 			var childElem = this.querySelectorAll('.body')[0];
 			if (childElem.style.display === 'block') {
@@ -79,21 +105,17 @@
 			}
 		}
 
-
-		
-
-
-			
-			// var mailElem = document.createElement('div');
-			// mailElem.innerHTML = loadMail(window.geemails);
-			// mail.appendChild(mailElem);
+// 		var parentElem = document.getElementsByClassName('messages');
+// console.log(parentElem)
+// 		for (var i=0; i<parentElem.length; i++) {
+// 			parentElem[i].addEventListener('click', showMail);
+// 		}
 
 
-			// var generateMail = (loadMail(window.geemails));
-			// console.log(window.geemails);
-			// console.log((window.geemails).length);
 
 };
+
+
 			
 
     </script>
@@ -101,31 +123,9 @@
 <body>
 	<section id="top-box">
 		<div class="heading">
-			<h1 class="geeMail">GeeMail</h1>
-
-<!-- <div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-    <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Contact Us</a>
-  </div>
-</div> -->
-
+			<h1 class="geeMail">GeeMail <img src="images/devLogo.jpeg" alt="devLogo" class="logo"></h1>
 		</div>
 	</section>
-
-
-	<!-- <section id="body">
-		<div class="left-box">
-			<li class="actions"><button type="button">Compose</button></li>
-			<li class="actions">Inbox</li>
-			<li class="actions">Starred</li>
-			<li class="actions">Sent Mail</li>
-			<li class="actions">Drafts</li>
-		</div>
-		<div id="mid-box"> </div>
-	</section> -->
 
 </body>
 </html>
