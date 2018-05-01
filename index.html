@@ -86,7 +86,7 @@
               removeArrayElement(email);
               email.classList.add('fade-email');
               setTimeout(function() {
-                email.remove();
+                email.parentNode.removeChild(email);
               }, 350);
               setTimeout(function() {
                 inboxCount.textContent = geemails.length;
