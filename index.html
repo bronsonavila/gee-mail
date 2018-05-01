@@ -106,10 +106,10 @@
 
         // Add ability to open/close/delete old emails:
         var emails = document.querySelectorAll('.email');
-        emails.forEach(function(email) {
-          addOpenClose(email);
-          addDelete(email);
-        });
+        for (var i = 0; i < emails.length; i++) {
+          addOpenClose(emails[i]);
+          addDelete(emails[i]);
+        }
 
         function pushNewMessageToGeemails() {
           var newMessage = getNewMessage();
