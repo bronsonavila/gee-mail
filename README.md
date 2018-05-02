@@ -35,7 +35,7 @@ You will need the following tools to complete this challenge
 		* Subject
 	* When clicking on a message you must provide some method of showing the message for that row. -->
 
-5. You must show an inbox count somewhere on the page to show the current number of messages in your inbox.
+<!-- 5. You must show an inbox count somewhere on the page to show the current number of messages in your inbox.
 
 6. Set a recurring function to via the JavaScript `setInterval` function that will call our existing `getNewMessage` function that we have created for you that will return a newly created message with the same properties as your previous messages.
 
@@ -43,7 +43,7 @@ You will need the following tools to complete this challenge
 
 7. All JavaScript should be created in the `<head>` element in your included `index.html` file inside of the window.onload function already created in the `<head>` section.
 
-8. Commit your code often and when you are completed send us a pull request from your repository so that we may review your code.
+8. Commit your code often and when you are completed send us a pull request from your repository so that we may review your code. -->
 
 Bonus: You may add any images or any extra functionality that you wish to your application and use any other JavaScript frameworks if you like.
 

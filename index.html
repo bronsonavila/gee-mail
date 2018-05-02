@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<title>GeeMail</title>
 	<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
@@ -21,11 +22,21 @@
   			return newElem;
 			}
 
-//email counter
+//email counter function
+			var counter = window.geemails.length;
+		
+			function returnCount(x){
+				for (var i=0; i<x.length; i++);
+				return x;
+			}
+			var emailCount = (returnCount("You have " + counter + " geeMails!"));
 			
-
-
-//heading content 
+//heading content
+			var counterBox = document.createElement('h2');
+			counterBox.className = 'counter';
+			document.body.appendChild(counterBox);
+			// counterBox.innerHTML = ("You have " + counter + " geeMails!");
+			
 			var headingBox = document.createElement('section');
 			headingBox.className = 'headings';
 			document.body.appendChild(headingBox);
@@ -43,7 +54,7 @@
 			function loadMail(content) {
 				for (var i=0; i<content.length; i++){
 
-					//container for mail headings  //when set as ID it breaks?
+					//container for mail headings   
 					var mailBox = document.createElement('section');
 					mailBox.className = 'messages';
 					document.body.appendChild(mailBox);
@@ -68,7 +79,7 @@
 		loadMail(window.geemails);
 
 //creates and appends a new message to the application
-var newMessages = setInterval(newMail, 8000);
+var newMessages = setInterval(newMail, 5000);
 
 function newMail(){
 
@@ -91,6 +102,13 @@ function newMail(){
 		mailBoxTwo.appendChild(newBody);
 
 		mailBoxTwo.addEventListener('click', showMail);
+
+//increment the email counter as additional emails pass through
+		var addMail = counter++;  
+		counterBox.innerHTML = ("You have " + addMail + " geeMails!");
+		
+		
+
 		
 }
 newMail(getNewMessage());
@@ -113,6 +131,8 @@ newMail(getNewMessage());
 
 
 
+
+
 };
 
 
@@ -122,7 +142,7 @@ newMail(getNewMessage());
 </head>
 <body>
 	<section id="top-box">
-		<div class="heading">
+		<div id="heading">
 			<h1 class="geeMail">GeeMail <img src="images/devLogo.jpeg" alt="devLogo" class="logo"></h1>
 		</div>
 	</section>
