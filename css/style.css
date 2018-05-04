@@ -1,24 +1,45 @@
+
 body {
-    border: solid 3px;
+    background-image: url(http://ak7.picdn.net/shutterstock/videos/1786637/thumb/1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .logo {
-    height: 50px;
-    width: 50px;
+    height: 120px;
+    width: 120px;
     float: right;
 }
+
 .geeMail {
-    font-size: 30px;
+    font-size: 50px;
+    color: magenta;
+    font-family: 'Pacifico', cursive;
+    margin: 0px;
 }
+
+.counter {
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+    margin: 0px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
 
 .messages{
     cursor:pointer;
+    padding-top: 10px;
+    margin-left: 5px;
 }
 
 .headings {
-    background-color: lightblue;
-    font-size: 20px;
+    background-color: pink;
+    font-size: 25px;
     font-weight: bold;
-    /* display: inline-block; */
+    font-family: 'Pacifico', cursive;
+    color: magenta;
+
+    
 }
 
 .senderHeading {
@@ -32,7 +53,6 @@ body {
     width: 33%;
 
 }
-
 .dateHeading {
     text-align: right;
     display: inline-block;
@@ -43,13 +63,37 @@ body {
 
 .body {
     display: none;
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+	background: pink;
+    border-radius: .4em;
+    margin-top: 18px;
+    font-family: 'Signika', sans-serif;
+    padding: 10px;
+}
+
+.body::after {
+    content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-bottom-color: pink;
+	border-top: 0;
+	border-left: 0;
+	margin-left: -10px;
+	margin-top: -20px;
 }
 
 .sender {
     display: inline-block;
     width: 33%;
-    background-color: red;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Signika', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
 
     
 }
@@ -58,8 +102,9 @@ body {
     text-align: center;
     display: inline-block;
     width: 33%;
-    background-color: whitesmoke;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Signika', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
 
 
 }
@@ -68,56 +113,10 @@ body {
     text-align: right;
     display: inline-block;
     width: 33%;
-    background-color: blue;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Signika', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+
 
 }
 
-
-
-
-
-
-
-
-
-
-/* 
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #ddd}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-} */

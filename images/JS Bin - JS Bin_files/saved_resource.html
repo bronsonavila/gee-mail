@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://null.jsbin.com/runner -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+img {
+  animation: 1s swivel infinite;
+  position: absolute;
+}
+</style>
+</head>
+<body>
+<h1 id="car">Lings Cars</h1>
+  
+  
+  <button id="price">Show Price</button>
+<script>try {//longer version
+var h1Elem = document.getElementById('car');
+h1Elem.addEventListener('click', showCar);
+
+function showCar (){
+  
+  var imgElem = document.createElement('img');
+  imgElem.src = "https://www.cstatic-images.com/car-pictures/xl/usc30frc171a021003.png";
+  document.body.appendChild(imgElem);
+  
+}
+
+//shorter version
+price.addEventListener('click', function(){
+    var pElem = document.createElement('p');
+  pElem.innerHTML = '$220,000';
+  document.body.appendChild(pElem);
+  
+
+})
+} catch (error) { throw error; }
+
+//# sourceURL=wumoha.js
+</script>
+
+<img src="./usc30frc171a021003.png"></body></html>
