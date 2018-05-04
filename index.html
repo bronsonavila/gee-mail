@@ -14,6 +14,9 @@
       window.onload = function() {
         var inboxCount = document.querySelector('#inbox-count');
         var mainContainer = document.querySelector('#main-container');
+        var year = document.querySelector('#year');
+
+        year.innerText = new Date().getFullYear();
 
         // Sort array of old emails in chronological order:
         geemails.sort(function(a, b) {
@@ -172,7 +175,7 @@
     </div>
     <div id="footer">
       <div id="footer-container">
-        © 2018 GeeMail. All Rights Reserved.
+        © <span id="year"></span> GeeMail. All Rights Reserved.
       </div>
     </div>
   </body>
