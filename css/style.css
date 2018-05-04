@@ -38,27 +38,23 @@ body {
     font-weight: bold;
     font-family: 'Pacifico', cursive;
     color: magenta;
-
-    
 }
 
 .senderHeading {
     display: inline-block;
     width: 33%;
-
 }
+
 .subjectHeading {
     text-align: center;
     display: inline-block;
     width: 33%;
-
 }
+
 .dateHeading {
     text-align: right;
     display: inline-block;
     width: 33%;
-
-
 }
 
 .body {
@@ -93,9 +89,7 @@ body {
     width: 33%;
     font-family: 'Signika', sans-serif;
     font-size: 18px;
-    font-weight: bold;
-
-    
+    font-weight: bold; 
 }
 
 .subject {
@@ -116,7 +110,5 @@ body {
     font-family: 'Signika', sans-serif;
     font-size: 18px;
     font-weight: bold;
-
-
 }
 

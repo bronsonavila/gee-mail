@@ -29,7 +29,7 @@
     return arr[Math.floor(Math.random() * arr.length)];  //function to return random elements in generateMessage
   }
 
-  function getNewMessage(){
+  function getNewMessage(){  //generates a new message but as an object, not an array
     var now = new Date();
     return generateMessage(now);
   }
