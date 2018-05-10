@@ -84,7 +84,7 @@
         function addDelete(email) {
           email.children[0].children[1].children[1].addEventListener(
             'mouseup',
-            function(event) {
+            function eventFunction(event) {
               event.stopPropagation();
               removeArrayElement(email);
               email.classList.add('fade-email');
@@ -94,6 +94,11 @@
               setTimeout(function() {
                 inboxCount.textContent = geemails.length;
               }, 250);
+              // Prevents TypeError if user repeatedly clicks icon during fadeout:
+              this.removeEventListener('mouseup', eventFunction);
+              this.addEventListener('mouseup', function(event) {
+                event.stopPropagation();
+              });
             }
           );
         }
