@@ -35,18 +35,27 @@
           var displayedEmailMonth = geemails[index].date.getMonth();
           displayedEmail.id = id;
           displayedEmail.innerHTML =
-              '<div class="email-header">' +
-              '<div class="email-header-top"><div class="email-sender">' +
-              geemails[index].sender +
-              '</div><div class="email-date">' +
-              constructEmailDate(displayedEmailMonth, index) +
-              '</div></div><div class="email-header-bottom"><div class="email-subject">' +
-              geemails[index].subject +
-              '</div><div class="trash">' +
-              '<i class="feather-trash" data-feather="trash-2"></i>' +
-              '</div></div></div><div class="email-body email-body-hidden">' +
-              geemails[index].body +
-              '</div>';
+              `<div class="email-header">
+                <div class="email-header-top">
+                  <div class="email-sender">` +
+                    geemails[index].sender +
+                  `</div>
+                  <div class="email-date">` +
+                    constructEmailDate(displayedEmailMonth, index) +
+                  `</div>
+                </div>
+                <div class="email-header-bottom">
+                  <div class="email-subject">` +
+                    geemails[index].subject +
+                  `</div>
+                  <div class="trash">
+                    <i class="feather-trash" data-feather="trash-2"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="email-body email-body-hidden">` +
+                geemails[index].body +
+              `</div>`;
           return displayedEmail;
         }
 
